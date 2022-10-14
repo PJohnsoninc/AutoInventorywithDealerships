@@ -19,6 +19,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		
 		Model: <input type="text" name="model"><br>
 		Year: <input type="text" name="year"><br>
 		<input type="submit" value="Add Vehicle">
