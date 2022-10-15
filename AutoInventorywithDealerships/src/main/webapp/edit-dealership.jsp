@@ -11,10 +11,18 @@
 
 <form action = "editDealershipServlet" method="post">
 <input type ="hidden" name = "id" value= "${dealershipToEdit.id}">
-Dealership Name: <input type ="text" name = "dealershipName" value= "${dealershipToEdit.dealershipName}"><br />
+Dealership Name: <input type ="text" name = "dealershipName" value= "${dealershipToEdit.name}"><br />
 
-Last modified: <input type ="text" name = "month" placeholder="mm" size="4" value= "${month}"> <input type ="text" name = "day" placeholder="dd" size="4" value= "${date}">, <input type ="text" name = "year" placeholder="yyyy" size="4" value= "${year}">
-Brand Name: <input type = "text" name = "brandName" value= "${brandToEdit.brand.brandName}"><br />
+Last modified: <input type ="text" name = "month" placeholder="mm" size="4" value= "${month}"> <input type ="text" name = "day" placeholder="dd" size="4" value= "${date}"> <input type ="text" name = "year" placeholder="yyyy" size="4" value= "${year}">
+<br>
+Available Brands to Carry:<br />
+
+<select name = "allBrandsToAdd" multiple size = "6">
+<c:forEach items = "${requestScope.allBrands}" var="currentauto">
+<option value = "${currentauto.id}">${currentauto.brandName}</option>
+</c:forEach>
+</select>
+<br />
 
 Available Autos:<br />
 

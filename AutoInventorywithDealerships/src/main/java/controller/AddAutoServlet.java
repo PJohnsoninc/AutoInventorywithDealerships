@@ -47,7 +47,7 @@ public class AddAutoServlet extends HttpServlet {
 		AutoListHelper dao = new AutoListHelper();
 		dao.insertAuto(auto);
 		
-		getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/passToAutoServlet").forward(request, response);
 	}
 
 }

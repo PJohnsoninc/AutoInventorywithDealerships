@@ -67,9 +67,14 @@ public class DealershipNavigationServlet extends HttpServlet {
 				request.setAttribute("year", dealershipToEdit.getLastModified().getYear());
 				
 				AutoListHelper daoForAutos = new AutoListHelper();
+				AutoBrandsHelper daoForBrands = new AutoBrandsHelper();
 				
-				request.setAttribute("allAutos", daoForAutos.showAll());
-							
+				request.setAttribute("allBrands", daoForBrands.showAll());
+				if(daoForBrands.showAll().isEmpty()) {
+					request.setAttribute("allBrands", " ");
+				}
+				
+				request.setAttribute("allAutos", daoForAutos.showAll());		
 				if(daoForAutos.showAll().isEmpty()){
 						request.setAttribute("allAutos", " ");
 				}
@@ -84,7 +89,7 @@ public class DealershipNavigationServlet extends HttpServlet {
 			if(alh.showAll().isEmpty()) {
 				request.setAttribute("allAutos", " ");
 			}
-			getServletContext().getRequestDispatcher("/new-dealership.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/addAutosForDealershipServlet").forward(request, response);
 		}
 		
 	}

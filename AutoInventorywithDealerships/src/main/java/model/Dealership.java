@@ -3,15 +3,19 @@ package model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 /**
  * @authors peterjohnson & logan kennebeck - pmjohnson5 & ljkennebeck1
  * CIS175-Fall 2022
  * October 11, 2022
  */
 @Entity
+
 public class Dealership {
 	
 	@Id

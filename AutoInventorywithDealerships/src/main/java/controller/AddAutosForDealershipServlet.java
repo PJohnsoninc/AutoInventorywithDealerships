@@ -28,6 +28,13 @@ public class AddAutosForDealershipServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		AutoListHelper dao = new AutoListHelper();
+		AutoBrandsHelper bdao = new AutoBrandsHelper();
+		
+		request.setAttribute("allBrands", bdao.showAll());
+		if(bdao.showAll().isEmpty()) {
+			request.setAttribute("allBrands", " ");
+		}
+		
 		request.setAttribute("allAutos", dao.showAll());
 		if(dao.showAll().isEmpty()) {
 			request.setAttribute("allAutos", " ");

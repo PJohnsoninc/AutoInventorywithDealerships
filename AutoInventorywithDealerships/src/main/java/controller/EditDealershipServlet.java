@@ -69,6 +69,23 @@ public class EditDealershipServlet extends HttpServlet {
 		
 		try {
 			//autos are selected in list to add
+			String[] selectedBrands = request.getParameterValues("allBrandsToAdd");
+			List<AutoBrands> selectedBrandsInList = new ArrayList<AutoBrands>();
+
+			for (int i = 0; i < selectedBrands.length; i++) {
+				System.out.println(selectedBrands[i]);
+				AutoBrands c = abh.searchById(Integer.parseInt(selectedBrands[i]));
+				selectedBrandsInList.add(c);
+			}
+			dealershipToUpdate.setCarriedBrands(selectedBrandsInList);
+		} catch (NullPointerException ex) {
+			// no autos selected in list - set to an empty list
+			List<AutoBrands> selectedBrandsInList = new ArrayList<AutoBrands>();
+			dealershipToUpdate.setCarriedBrands(selectedBrandsInList);
+		}
+		
+		try {
+			//autos are selected in list to add
 			String[] selectedAutos = request.getParameterValues("allAutosToAdd");
 			List<AutoList> selectedAutosInList = new ArrayList<AutoList>();
 
