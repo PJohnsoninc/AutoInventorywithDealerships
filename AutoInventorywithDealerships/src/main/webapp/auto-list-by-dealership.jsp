@@ -11,21 +11,28 @@
 
 <form method="post" action="dealershipNavigationServlet">
 <table>
-<c:forEach items="${requestScope.allDealerships}" var="currentdealership">
+<c:forEach items="${requestScope.allDealerships }" var="currentdealership">
 <tr>
-	<td><input type="radio" name="id" value="${currentdealership.id}"></td>
-	<td><h2>${currentdealership.name}</h2></td>
+	<td><input type="radio" name="id" value="${currentdealership.id }"></td>
+	<td><h2>${currentdealership.name }</h2></td>
 </tr>
 	
 <tr>
-	<td colspan="3">Last Modified: ${currentdealership.lastModified}</td>
+	<td colspan="3">Last Modified: ${currentdealership.lastModified }</td>
 </tr>
-
-
-<c:forEach var="listVal" items="${currentdealership.listOfVehicles}">
+<td colspan="3">Carried Brands:</td>
+<c:forEach var="listVal" items="${currentdealership.carriedBrands }">
 <tr><td></td>
 <td colspan="3">
-${listVal.make}, ${listVal.model}, ${listVal.year}
+${listVal.brandName }
+</td>
+</tr>
+</c:forEach>
+<td colspan="3">Inventory:</td>
+<c:forEach var="listVal" items="${currentdealership.listOfVehicles }">
+<tr><td></td>
+<td colspan="3">
+${listVal.make }, ${listVal.model }, ${listVal.year }
 </td>
 </tr>
 </c:forEach>

@@ -15,8 +15,15 @@ Last Modified: <input type="text" name = "month" placeholder="mm" size="4">
 <input type="text" name = "day" placeholder="dd" size="4">
 <input type="text" name = "year" placeholder="yyyy" size="4"><br />
 
+Available Brands to Carry:<br>
+<select name = "allBrandsToAdd" multiple size = "6">
+<c:forEach items = "${requestScope.allBrands}" var="currentbrand">
+<option value = "${currentbrand.id}">${currentbrand.brandName}</option>
+</c:forEach>
+</select>
+<br />
 
-Available Autos:<br />
+Available Autos: <br>
 <select name = "allAutosToAdd" multiple size = "6">
 <c:forEach items = "${requestScope.allAutos}" var="currentauto">
 <option value = "${currentauto.id}">${currentauto.make} | ${currentauto.model} | ${currentauto.year}</option>

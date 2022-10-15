@@ -19,7 +19,7 @@
 	<a href="viewAllAutoServlet">View full inventory</a><br>
 	<a href="auto-search.jsp">Search through vehicles</a><br />
 	
-	<a href = "viewAllDealershipsServlet">View all auto dealerships</a> <br />
-	<a href = "addAutosForDealershipServlet">Create a new dealership auto list</a>
+	<a href = "addAutosForDealershipServlet">Create a new dealership auto list</a> <br />
+	<a href = "viewAllDealershipsServlet">View all auto dealerships</a>
 </body>
 </html>

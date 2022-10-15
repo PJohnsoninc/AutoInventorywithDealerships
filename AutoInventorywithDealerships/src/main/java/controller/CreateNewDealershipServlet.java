@@ -36,6 +36,7 @@ public class CreateNewDealershipServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		AutoListHelper alh = new AutoListHelper();
+		AutoBrandsHelper abh = new AutoBrandsHelper();
 		String dealershipName = request.getParameter("dealershipName");
 		System.out.println("Dealership Name: " + dealershipName);
 		
@@ -48,6 +49,17 @@ public class CreateNewDealershipServlet extends HttpServlet {
 			ld = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
 		}catch (NumberFormatException ex){
 			ld = LocalDate.now();
+		}
+		
+		String[] selectedBrands = request.getParameterValues("allBrandsToAdd");
+		List<AutoBrands> selectedBrandsInList = new ArrayList<AutoBrands>();
+		
+		if(selectedBrands != null && selectedBrands.length > 0){
+			for(int i = 0; i<selectedBrands.length; i++) {
+				System.out.println(selectedBrands[i]);
+				AutoBrands c = abh.searchById(Integer.parseInt(selectedBrands[i]));
+				selectedBrandsInList.add(c);
+			}
 		}
 		
 		String[] selectedAutos = request.getParameterValues("allAutosToAdd");
@@ -64,6 +76,7 @@ public class CreateNewDealershipServlet extends HttpServlet {
 		
 		Dealership cld = new Dealership(dealershipName, ld);
 		cld.setListOfVehicles(selectedAutosInList);
+		cld.setCarriedBrands(selectedBrandsInList);
 		DealershipHelper clh = new DealershipHelper();
 		clh.insertDealership(cld);
 		
